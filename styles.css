@@ -1,0 +1,19 @@
+body {
+    background-color: hsl(226,40%,60%);
+    min-height: 100svh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table, th, tr, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 0.4em;
+    text-align: center;
+}
+
+span:hover {
+    font-size: 1.1rem;
+    cursor: pointer;
+}

@@ -12,9 +12,20 @@ table, th, tr, td {
     border-collapse: collapse;
     padding: 0.4em;
     text-align: center;
+    background-color: hsl(200, 60%,50%, 0.7);
 }
 
-span:hover {
+th:hover {
     font-size: 1.1rem;
     cursor: pointer;
+    background-color: hsl(200, 60%,35%);
+}
+
+button {
+    margin-top: 1em;
+    padding: 0.5em 1em;
+    background-color: hsl(200, 60%,50%, 0.3);
+    color: white;
+    border: none;
+    border-radius: 6px;
 }

@@ -128,15 +128,7 @@ function reset() {
 }
 
 
-
-let runCounter = 1;
-table.addEventListener('click', () => {
-  if (runCounter % 2 !== 0) {
-    runCounter++;
-    replaceElements();
-  } else {
-    reset();
-    runCounter++;
-  }
-});
-
+// event to execute functions
+const resetButton = document.getElementById('reset');
+table.addEventListener('click', replaceElements);
+resetButton.addEventListener('click', reset);

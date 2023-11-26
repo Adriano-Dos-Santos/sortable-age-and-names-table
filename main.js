@@ -3,7 +3,6 @@ const body = document.querySelector('body');
 
 // Create nodelists with all age and name nodes of the table
  let agesOriginal = document.querySelectorAll('.age');
-
  let namesOriginal = document.querySelectorAll('.name');
 
 // create and populate an age and name array with tha textContent of the node elements
@@ -78,22 +77,22 @@ function replaceElements() {
   let counter = 0;
   // Sort and replace Ages
   if (event.target.classList.contains("ageSpan")) {
+
     let ageSorted = sortAges(ageValuesDefault);
     let nameRelationSorted = relationSort(ageSorted, nameValuesDefault);
-
+    // replace ages
     agesOriginal.forEach(ageItem => {
       ageItem.textContent = ageSorted[counter];
       counter++;
     });
 
     counter = 0;
-
+    // replace names with based on relationPairs
     namesOriginal.forEach(nameItem => {
       nameItem.textContent = nameRelationSorted[counter];
       counter++;
     });
 
-    console.log(`test: nice`)
   } else if (event.target.classList.contains("nameSpan")) {
 
   //Sort and replace Names
@@ -111,26 +110,33 @@ function replaceElements() {
       ageItem.textContent = ageRelationSorted[counter];
       counter++;
     });
-
-    console.log("HEEEEEEEEEEE");
   }
+      console.log("replaced");
 }
 
-table.addEventListener('click', replaceElements);
+
+// reset on alternate clicks
+
+function reset() {
+  let counter = 0;
+  for(let property in relationPairs) {
+    agesOriginal[counter].textContent = relationPairs[property];
+    namesOriginal[counter].textContent = property;
+    counter++;
+  }
+      console.log("reseted");
+}
 
 
-// log
-//   const p = document.createElement('p');
-// p.textContent = `${ageValuesDefault} : ${nameValuesDefault}`;
-//   body.appendChild(p);
 
-console.table(`object structure with related name and age pairs:`, relationPairs);
+let runCounter = 1;
+table.addEventListener('click', () => {
+  if (runCounter % 2 !== 0) {
+    runCounter++;
+    replaceElements();
+  } else {
+    reset();
+    runCounter++;
+  }
+});
 
-console.log(`name values list original: ${nameValuesDefault}`);
-console.log(`age values list original: ${ageValuesDefault}`);
-
-console.log(`name values list sorted: ${sortNames(nameValuesDefault)}`);
-// console.log(`age values list sorted: ${sortAges(ageValuesDefault)}`);
-
-let sortedNames = sortNames(nameValuesDefault);
-console.log(`related pair array sorted: ${relationSort(sortedNames, ageValuesDefault)}`);
